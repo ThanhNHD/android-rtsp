@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements ConnectChecker {
     private boolean prepareStreamWithScaling() {
         int videoWidth = 640;
         int videoHeight = 640;
-        return rtspCamera1.prepareAudio() && rtspCamera1.prepareVideo(videoWidth, videoHeight, 1000000);
+        return rtspCamera1.prepareAudio() && rtspCamera1.prepareVideo(videoWidth, videoHeight, 2500000);
     }
 
     private void stopStreaming() {
