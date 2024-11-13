@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements ConnectChecker {
                 this.labelText = "Stream URL: rtsp://" + NetworkUtils.getDeviceIpAddress(this) + ":1935";
                 ipTextView.setText(this.labelText);
                 isStreaming = true;
-                this.buttonText="Stop Streaming";
+                this.buttonText = "Stop Streaming";
                 startStopButton.setText(this.buttonText);
                 startConnectionCheck();
             } else {
@@ -79,6 +79,13 @@ public class MainActivity extends AppCompatActivity implements ConnectChecker {
         } else {
             stopStreaming();
         }
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopStreaming();
     }
 
     private boolean prepareStreamWithScaling() {
@@ -90,9 +97,10 @@ public class MainActivity extends AppCompatActivity implements ConnectChecker {
     private void stopStreaming() {
         rtspCamera1.stopStream();
         isStreaming = false;
+        isConnected = false;
         handler.removeCallbacksAndMessages(null);
         openGlView.stop();
-        this.buttonText="Start Streaming";
+        this.buttonText = "Start Streaming";
         startStopButton.setText(this.buttonText);
         this.labelText = "Not Streaming";
         ipTextView.setText(this.labelText);
