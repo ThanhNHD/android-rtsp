@@ -17,7 +17,7 @@ public class NetworkUtils {
                 .filter(linkAddress ->
                         linkAddress.getAddress().getAddress().length==4)
                 .findFirst()
-                .map(LinkAddress::toString);
+                .map(linkAddress -> linkAddress.getAddress().getHostAddress());
         return test.orElse("error");
     }
 }
